@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff1493;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .question-box {
+            margin: 20px;
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        .option {
+            display: block;
+            margin: 15px auto;
+            padding: 15px 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            width: 90%;
+            max-width: 300px;
+        }
+
+        .option:hover {
+            background-color: #ff1493;
+        }
+
+        #no-button {
+            position: absolute;
+        }
+
+        .romantic-lines {
+            font-size: 1.8em;
+            color: #ff69b4;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .question-box {
+                font-size: 1.5em;
+            }
+
+            .option {
+                font-size: 1.2em;
+            }
+
+            .romantic-lines {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- First Page -->
+    <div id="page1">
+        <h1>Hey! Answer this question:</h1>
+        <p class="question-box">If I were a vegetable, which one would I be?</p>
+        <button class="option" onclick="nextPage('page2')">Carrot (because you're crunchy!)</button>
+        <button class="option" onclick="nextPage('page2')">Potato (because you're a couch potato!)</button>
+        <img src="https://via.placeholder.com/300x200" alt="Funny Image">
+    </div>
+
+    <!-- Second Page -->
+    <div id="page2" style="display:none;">
+        <h1>Another question!</h1>
+        <p class="question-box">If I were a dessert, which one would I be?</p>
+        <button class="option" onclick="nextPage('page3')">Chocolate Cake (because you're sweet!)</button>
+        <button class="option" onclick="nextPage('page3')">Ice Cream (because you melt my heart!)</button>
+        <img src="https://via.placeholder.com/300x200" alt="Funny Dessert Image">
+    </div>
+
+    <!-- Final Page: Do You Love Me? -->
+    <div id="page3" style="display:none;">
+        <h1>I love you, do you love me?</h1>
+        <img src="https://via.placeholder.com/400x300" alt="Romantic Image">
+        <button class="option" onclick="showLove()">Yes, I love you!</button>
+        <button class="option" id="no-button" onmouseover="moveNoButton()">No, sorry!</button>
+    </div>
+
+    <!-- Romantic Message Page -->
+    <div id="romantic-page" style="display:none;">
+        <h1>Yay! You love me too!</h1>
+        <p class="romantic-lines">"I must be a snowflake, because I've fallen for you!"</p>
+        <p class="romantic-lines">"You're the peanut butter to my jelly."</p>
+    </div>
+
+    <script>
+        function nextPage(pageId) {
+            document.querySelectorAll('div').forEach(page => page.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function showLove() {
+            nextPage('romantic-page');
+        }
+
+        function moveNoButton() {
+            const noButton = document.getElementById("no-button");
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
